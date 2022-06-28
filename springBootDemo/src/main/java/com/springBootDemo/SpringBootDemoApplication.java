@@ -11,19 +11,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class 	SpringBootDemoApplication {
 
 	public static void main(String[] args) {
-/*	String manam = "manam";
-		String raju = "raju";
 
-		StringBuffer buffer = new StringBuffer(manam);
-		String data=buffer.reverse().toString();
-
-		if(data.equals(manam)){
-			System.out.println(data);
-			System.out.println("is a polindriom");
-		}
-		else {
-			System.out.println("is  not a polindriom");
-		}*/
 		SpringApplication.run(SpringBootDemoApplication.class, args);
 
 	}
