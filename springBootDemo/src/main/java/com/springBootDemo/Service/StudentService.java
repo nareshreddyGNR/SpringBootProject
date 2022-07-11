@@ -1,5 +1,6 @@
 package com.springBootDemo.Service;
 
+import com.springBootDemo.Exceptions.InputsDataErrors;
 import com.springBootDemo.Exceptions.ResourceNotFoundException;
 import com.springBootDemo.Model.StudentDetails;
 import com.springBootDemo.Repository.MongoRepository;
@@ -17,10 +18,18 @@ public class StudentService {
 
 
 
-public StudentDetails SaveStudent(StudentDetails studentDetails){
-   return studentRepo.save(studentDetails);
+public StudentDetails SaveStudent(StudentDetails studentDetails) throws InputsDataErrors {
+    if (null!=studentDetails){
+      return studentRepo.save(studentDetails);
+        }
+   else{
+       throw new InputsDataErrors("please verify in put data !!");
+}
+
+
 }
 public StudentDetails getByName(String name) {
+
     return studentRepo.getByname(name);
 }
     public StudentDetails getByNumber(String number) {
@@ -37,5 +46,10 @@ public StudentDetails getByName(String name) {
     public String updateStudentDetails(String studentNumber, String studentName) {
        Object data= studentRepo.updateStudentData(studentNumber,studentName);
     return data.toString();
+    }
+
+    public List<StudentDetails> getAllREcordsWithLoction(String cityName) {
+
+    return studentRepo.getRecordsByLocation(cityName);
     }
 }

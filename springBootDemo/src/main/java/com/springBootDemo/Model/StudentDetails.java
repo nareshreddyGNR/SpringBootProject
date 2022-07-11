@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 
 @Data
@@ -22,11 +21,12 @@ public class StudentDetails extends VersionedBaseEntity {
     @NotEmpty
     private String studentName;
     private String studentNumber;
-    @Min(value = 18, message = "Age should not be less than 18")
-    @Max(value = 150, message = "Age should not be greater than 150")
-    private int age;
-    @Min(value = 0, message = "standard should not be less than 0")
-    @Max(value = 12, message = "standard should not be greater than 12")
+
+    @Pattern(regexp="^[0-9]{5}")
+    @Valid
+    private long age;
+   @Size(min = 2,max =8 ,message = "enter valid input between 2 to 8")
+    @NotEmpty
     private int standard;
     private Address studentAddress;
 
