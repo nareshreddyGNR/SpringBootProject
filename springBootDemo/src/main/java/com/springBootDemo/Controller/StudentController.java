@@ -4,6 +4,7 @@ import  com.springBootDemo.Exceptions.InputsDataErrors;
 import com.springBootDemo.Exceptions.ResourceNotFoundException;
 import com.springBootDemo.Model.StudentDetails;
 import com.springBootDemo.Service.StudentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name = "javainuseapi")
+
 @RequestMapping("/student")
 public class StudentController {
 
@@ -44,7 +47,7 @@ public class StudentController {
 
     }
 
-    @DeleteMapping("/{studentNumber}")
+    @DeleteMapping("deleteByNumber/{studentNumber}")
     public String getAllStudents(@PathVariable("studentNumber") String studentNumber ) throws ResourceNotFoundException {
         return studentService.deleteByNumber(studentNumber);
     }
