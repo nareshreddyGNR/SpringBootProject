@@ -69,7 +69,7 @@ return mongoTemplate.findOne(query,StudentDetails.class);
 
 
 
-
-        return  getAllStudentsrecords().stream().filter(studentDetails -> studentDetails.getStudentAddress().getCity().equals(cityName)).sorted().limit(1).collect(Collectors.toList());
+//with using java 8 stream filter
+        return  getAllStudentsrecords().stream().filter(studentDetails -> studentDetails.getStudentAddress().getCity().equals(cityName)).collect(Collectors.toList());
     }
 }
